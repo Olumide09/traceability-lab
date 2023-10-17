@@ -5,6 +5,17 @@ const app = express()
 
 app.use(express.static(`${__dirname}/public`))
 
+// include and initialize the rollbar library with your access token
+var Rollbar = require('rollbar')
+var rollbar = new Rollbar({
+  accessToken: 'ca3ccde6ef654d50aadb11314186df5c',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
+
+// record a generic message and send it to Rollbar
+rollbar.log('Hello world!')
+
 let recipeDatabase = ['Jambalaya Rice Recipe', 'Spicy Jerk Chicken with Potatoes', 'Smoked Jollof Rice', 'Coconut Fried Rice with Suya Sticks']
 
 
