@@ -21,7 +21,8 @@ let recipeDatabase = ['Jambalaya Rice Recipe', 'Spicy Jerk Chicken with Potatoes
 
 app.get ('/recipe', (req, res) => {
     let randomIndex = Math.floor(Math.random() * recipeDatabase.length + 1)
-
+    rollbar.info('someone wants a recipe')
+    
     res.status(200).send(recipeDatabase[randomIndex])
 })
 
